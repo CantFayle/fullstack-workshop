@@ -1,36 +1,26 @@
 import Link from "next/link";
+import Image from "next/image";
+
+const errorMessages = [
+  "Uh oh, wook wike da website had a wittle tumby upset!\n\nPooey pooey, it went uh-oh and made a stinky bwoken!\n\nWe gon' have to change its diapey and give it a bawfie to make it aww cwean again!",
+  "Who's a grumpy website? You are, you are!\n\nDid da wage box throw a tantrum and go uh-uh no way?\n\nDon't worry, we'll give it a pacifier and wock it to sweep sweep.",
+  "Looks wike somebody spilled deir ba-ba bottle aww over da server!\n\nWhat a silly biwwy website, making su-such a massy wassy!\n\nTime for a icky poo poo cwean-up on aisle..aww of dem!",
+  "Ohnoesies, did da websites's diau-wee not agree with it?\n\nMuddah muddah muddah, what are we going to do?\n\nMaybe some num-nums will make its tuddyache go away!",
+  "Someone needs a fwesh nappie!\n\nDa website went pee-pee poo-poo aww over da pwace!\n\nTsk tsk, whatama baby. After a good spankying, it'll be good as new!",
+  "We got some cra-crabby website owah here! Yesingadon'twanna cooperate, do we?\n\nAfter a ni-night of cwuddwies, it'll be aww giggles and smiles."
+]
+function getRandomInt(max: number) {
+  return Math.floor(Math.random() * max);
+}
 
 export default function HomePage() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
       <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-        <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
-          Create <span className="text-[hsl(280,100%,70%)]">My</span> App
+        <Image src={require('../../public/assets/baby.gif')} alt="baby" className="h-80 w-80" />
+        <h1 className="text-3xl text-white text-center">
+          {errorMessages[getRandomInt(5)]}
         </h1>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
-          <Link
-            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
-            href="https://create.t3.gg/en/usage/first-steps"
-            target="_blank"
-          >
-            <h3 className="text-2xl font-bold">First Steps →</h3>
-            <div className="text-lg">
-              Just the basics - Everything you need to know to set up your
-              database and authentication.
-            </div>
-          </Link>
-          <Link
-            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
-            href="https://create.t3.gg/en/introduction"
-            target="_blank"
-          >
-            <h3 className="text-2xl font-bold">Documentation →</h3>
-            <div className="text-lg">
-              Learn more about Create T3 App, the libraries it uses, and how to
-              deploy it.
-            </div>
-          </Link>
-        </div>
       </div>
     </main>
   );
