@@ -1,5 +1,5 @@
-import Link from "next/link";
 import Image from "next/image";
+import baby from '../../public/assets/baby.gif';
 
 const errorMessages = [
   "Uh oh, wook wike da website had a wittle tumby upset!\n\nPooey pooey, it went uh-oh and made a stinky bwoken!\n\nWe gon' have to change its diapey and give it a bawfie to make it aww cwean again!",
@@ -17,7 +17,7 @@ export default function HomePage() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
       <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-        <Image src={require('../../public/assets/baby.gif')} alt="baby" className="h-80 w-80" />
+        <Image src={baby} alt="baby" className="h-80 w-80" />
         <h1 className="text-3xl text-white text-center">
           {errorMessages[getRandomInt(5)]}
         </h1>
