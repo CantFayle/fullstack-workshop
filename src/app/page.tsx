@@ -1,5 +1,7 @@
 import Image from "next/image";
-import baby from '../../public/assets/baby.gif';
+import baby from '../../public/assets/baby2.gif';
+import { getServerAuthSession } from '~/server/auth'
+import SignInOutButton from "~/app/components/SignInOutButton";
 
 const errorMessages = [
   "Uh oh, wook wike da website had a wittle tumby upset!",
@@ -12,15 +14,20 @@ const errorMessages = [
   "Tsk tsk, whatama baby. After a good spankying, it'll be good as new!",
   "We got some cra-crabby website owah here! Yes baby don't wanna cooperate, do we?\n\nAfter a ni-night of cwuddwies, it'll be aww giggles and smiles."
 ]
+
 function getRandomInt(max: number) {
   return Math.floor(Math.random() * max);
 }
 
-export default function HomePage() {
+export default async function HomePage() {
+  const session = await getServerAuthSession();
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
+    <main
+      className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
+      <SignInOutButton authenticated={!!session}/>
+      <div>{session?.user?.email ?? 'Not authenticated'}</div>
       <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-        <Image src={baby} alt="baby" className="h-80 w-80" />
+        <Image src={baby} alt="baby" className="h-80 w-80"/>
         <h1 className="text-3xl text-white text-center">
           {errorMessages[getRandomInt(errorMessages.length - 1)]}
         </h1>
